@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import br.com.srcabral.myguests.R
 import br.com.srcabral.myguests.databinding.FragmentSlideshowBinding
 
-class SlideshowFragment : Fragment() {
+class AbsentFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var absentViewModel: AbsentViewModel
     private var _binding: FragmentSlideshowBinding? = null
 
     // This property is only valid between onCreateView and
@@ -25,14 +24,14 @@ class SlideshowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+        absentViewModel =
+            ViewModelProvider(this).get(AbsentViewModel::class.java)
 
         _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        absentViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

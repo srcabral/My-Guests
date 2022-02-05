@@ -1,13 +1,13 @@
-package br.com.srcabral.myguests.ui.slideshow
+package br.com.srcabral.myguests.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class AllGuestsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is absents guests Fragment"
+        value = "This is all guests Fragment"
     }
     val text: LiveData<String> = _text
 }
