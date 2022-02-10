@@ -12,17 +12,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.srcabral.myguests.R
 import br.com.srcabral.myguests.databinding.FragmentAllGuestsBinding
+import br.com.srcabral.myguests.databinding.FragmentPresenceBinding
 import br.com.srcabral.myguests.service.constants.GuestConstants
 import br.com.srcabral.myguests.view.adapter.GuestAdapter
 import br.com.srcabral.myguests.view.listener.GuestListener
 import br.com.srcabral.myguests.viewmodel.GuestsViewModel
 
-class AllGuestsFragment : Fragment() {
+class GuestsPresentsFragment : Fragment() {
+
+    private lateinit var mListener: GuestListener
+    private val mAdapter = GuestAdapter()
 
     private lateinit var mViewModel: GuestsViewModel
-    private lateinit var binding: FragmentAllGuestsBinding
-    private  lateinit var mListener: GuestListener
-    private val mAdapter = GuestAdapter()
+    private lateinit var binding: FragmentPresenceBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,13 +34,13 @@ class AllGuestsFragment : Fragment() {
         mViewModel =
             ViewModelProvider(this).get(GuestsViewModel::class.java)
 
-        binding = FragmentAllGuestsBinding.inflate(inflater, container, false)
+        binding = FragmentPresenceBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // RecycleView -> 3 etapas para usa-lo
         // 1 - Obter o RecycleView
         // root.findViewById<RecyclerView>(R.id.recycle_all_guests)
-        val recycler = binding.recycleAllGuests
+        val recycler = binding.recyclePresentsGuests
 
         // 2 - Definir um layout
         recycler.layoutManager = LinearLayoutManager(context)
@@ -61,7 +63,7 @@ class AllGuestsFragment : Fragment() {
 
             override fun onDelete(id: Int) {
                 mViewModel.delete(id)
-                mViewModel.load(GuestConstants.FILTER.DEFAULT)
+                mViewModel.load(GuestConstants.FILTER.PRESENT)
 
                 Toast.makeText(context, R.string.removido_com_sucesso, Toast.LENGTH_SHORT).show()
             }
@@ -75,7 +77,7 @@ class AllGuestsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        mViewModel.load(GuestConstants.FILTER.DEFAULT)
+        mViewModel.load(GuestConstants.FILTER.PRESENT)
     }
 
     private fun observer() {
