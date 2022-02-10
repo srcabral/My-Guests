@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/nav_all_guests"
         android:name="br.com.srcabral.myguests.view.AllGuestsFragment"
-        android:label="@string/menu_all_guests"
+        android:label="@string/menu_todos_convidados"
         tools:layout="@layout/fragment_all_guests" />
 
     <fragment
         android:id="@+id/nav_presents"
         android:name="br.com.srcabral.myguests.view.PresentFragment"
-        android:label="@string/menu_presents"
+        android:label="@string/menu_presentes"
         tools:layout="@layout/fragment_presence" />
 
     <fragment
         android:id="@+id/nav_absents"
         android:name="br.com.srcabral.myguests.view.AbsentFragment"
-        android:label="@string/menu_absents"
+        android:label="@string/menu_ausentes"
         tools:layout="@layout/fragment_absent" />
 </navigation>

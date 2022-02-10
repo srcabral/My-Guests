@@ -141,7 +141,7 @@ class GuestRepository private constructor(context: Context) {
                     val presence =
                         (cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.PRESENCE)) == 1)
 
-                    val guest = GuestModel(id, name, true)
+                    val guest = GuestModel(id, name, presence)
                     list.add(guest)
                 }
             }
@@ -158,13 +158,17 @@ class GuestRepository private constructor(context: Context) {
         return try {
             val db = mGuestDataBaseHelper.readableDatabase
 
-            val cursor = db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 0", null)
+            val cursor =
+                db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 0", null)
 
-            if(cursor != null && cursor.count > 0){
-                while (cursor.moveToNext()){
-                    val id = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.ID))
-                    val name = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.NAME))
-                    val presence = (cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.PRESENCE)) == 1)
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id =
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.ID))
+                    val name =
+                        cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.NAME))
+                    val presence =
+                        (cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.GUEST.COLUMNS.PRESENCE)) == 1)
 
                     val guest = GuestModel(id, name, presence)
                     list.add(guest)
@@ -172,7 +176,7 @@ class GuestRepository private constructor(context: Context) {
             }
 
             list
-        } catch (e: Exception){
+        } catch (e: Exception) {
             list
         }
     }

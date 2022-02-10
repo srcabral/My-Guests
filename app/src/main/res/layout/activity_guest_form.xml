@@ -11,7 +11,7 @@
         android:id="@+id/text_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/tv_name"
+        android:text="@string/nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         android:id="@+id/text_confirmation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_confirmation"
+        android:text="@string/confirmacao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_name" />
 
@@ -43,20 +43,20 @@
             android:id="@+id/radio_presence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rb_presence" />
+            android:text="@string/presente" />
 
         <RadioButton
             android:id="@+id/radio_absence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rb_absence" />
+            android:text="@string/ausente" />
     </RadioGroup>
 
     <Button
         android:id="@+id/button_salve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_save"
+        android:text="@string/salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
